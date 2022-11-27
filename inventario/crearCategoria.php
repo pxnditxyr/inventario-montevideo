@@ -4,7 +4,7 @@
     function crearCategoria () {
         return '
 <form>
-        
+  
 </form>
 ';
     }
