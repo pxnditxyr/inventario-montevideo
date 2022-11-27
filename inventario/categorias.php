@@ -12,5 +12,6 @@ function categorias () {
       </div>
     ';
   }
-  echo layout( 'Categorias', 'Welcome to the categorias' );
+  $categorias = categorias();
+  echo layout( 'Categorias', $categorias );
 ?>
