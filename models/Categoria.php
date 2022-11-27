@@ -39,6 +39,17 @@
       $categoria = $resultado -> fetch_assoc();
       return $categoria;
     }
+
+    public function existeCategoria ( $nombre ) {
+      $sql = 'SELECT * FROM categorias WHERE nombre = ? AND estado = 1';
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 's', $nombre );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $categoria = $resultado -> fetch_assoc();
+      return $categoria;
+    }
+
     public function crearCategoria ( $nombre, $detalles, $descripcion ) {
       $sql = "INSERT INTO categorias ( id, nombre, detalles, descripcion, estado, created_at, updated_at ) 
               VALUES ( 'NULL', ?, ?, ?, 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "' );";
