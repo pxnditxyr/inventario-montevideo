@@ -59,8 +59,42 @@
       $this -> obtenerUsuarioPorEmailYPassword( $email, $password );
       return $resultado;
     }
-    public function actualizarUsuario ( $apellidos, $nombres, $ci, $fecha_nac, $email, $password ) {
-      
+    public function actualizarUsuario ( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password ) {
+      $sql = "UPDATE usuarios SET apellidos = ?, nombres = ?, fecha_nac = ?, ci = ?, email = ?, password = ?, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 'sssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password, $id );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $this -> obtenerUsuarioPorEmailYPassword( $email, $password );
+      return $resultado;
+    }
+    public function eliminarUsuario ( $id ) {
+      $sql = "UPDATE usuarios SET estado = 0, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 's', $id );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      return $resultado;
+    }
+
+    public function obtenerTodosLosUsuarios () {
+      $sql = 'SELECT * FROM usuarios';
+      $usuarios = [];
+      $resultado = $this -> conexion -> obtenerConexion() -> query( $sql );
+      while ( $usuario = $resultado -> fetch_assoc() ) {
+        $usuarios[] = $usuario;
+      }
+      return $usuarios;
+    }
+
+    public function obtenerUsuariosHabilitados () {
+      $sql = 'SELECT * FROM usuarios WHERE estado = 1';
+      $usuarios = [];
+      $resultado = $this -> conexion -> obtenerConexion() -> query( $sql );
+      while ( $usuario = $resultado -> fetch_assoc() ) {
+        $usuarios[] = $usuario;
+      }
+      return $usuarios;
     }
   }
 ?>
