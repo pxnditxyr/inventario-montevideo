@@ -5,7 +5,6 @@ function categorias () {
       <div>
         <form action="actions/crearCategoria.php" method="POST">
           <input type="text" name="nombre" placeholder="Nombre">
-          <input type="text" name="codigo" placeholder="Codigo">
           <input type="text" name="detalles" placeholder="Detalles">
           <input type="text" name="descripcion" placeholder="Descripcion">
           <input type="submit" name="crear" value="Crear">
