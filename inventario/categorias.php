@@ -1,6 +1,6 @@
 <?php 
   require_once './layouts/layout.php';
-public function categorias () {
+function categorias () {
   return '
     <div>
       <h1> Categorias </h1>
