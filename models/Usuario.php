@@ -57,23 +57,23 @@
       $this -> rol = $usuario[ 'rol' ];
       return $usuario;
     }
-    
-    public function crearUsuario ( $apellidos, $nombres, $ci, $fecha_nac, $email, $password ) {
-      $sql = "INSERT INTO usuarios ( id, apellidos, nombres, fecha_nac, ci, email, password, rol, estado, created_at, upated_at ) 
-              VALUES ( 'NULL', ?, ?, ?, ?, ?, ?, 'usuario', 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "' );";
+
+    public function crearUsuario ( $apellidos, $nombres, $ci, $fecha_nac, $email, $password, $rol = 'usuario' ) {
+      $sql = "INSERT INTO usuarios ( id, apellidos, nombres, fecha_nac, ci, email, password, rol, estado, created_at, upated_at )
+              VALUES ( 'NULL', ?, ?, ?, ?, ?, ?, ?, 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "' );";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
-      
-      $sentencia -> bind_param( 'ssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password );
+
+      $sentencia -> bind_param( 'sssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password, $rol );
 
       $sentencia -> execute();
       $resultado = $sentencia -> get_result();
       $this -> obtenerUsuarioPorEmailYPassword( $email, $password );
       return $resultado;
     }
-    public function actualizarUsuario ( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password ) {
-      $sql = "UPDATE usuarios SET apellidos = ?, nombres = ?, fecha_nac = ?, ci = ?, email = ?, password = ?, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
+    public function actualizarUsuario ( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password, $rol = 'usuario' ) {
+      $sql = "UPDATE usuarios SET apellidos = ?, nombres = ?, fecha_nac = ?, ci = ?, email = ?, password = ?, rol = ?, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
-      $sentencia -> bind_param( 'sssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password, $id );
+      $sentencia -> bind_param( 'ssssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password, $rol, $id );
       $sentencia -> execute();
       $resultado = $sentencia -> get_result();
       $this -> obtenerUsuarioPorEmailYPassword( $email, $password );

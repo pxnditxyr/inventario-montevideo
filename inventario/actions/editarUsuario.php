@@ -1,6 +1,6 @@
 <?php
   require_once '../../models/Usuario.php';
-  if ( !isset( $_POST[ 'id' ] ) || !isset( $_POST[ 'apellidos' ] ) || !isset( $_POST[ 'nombres' ] ) || !isset( $_POST[ 'ci' ] ) || !isset( $_POST[ 'fecha_nac' ] ) || !isset( $_POST[ 'email' ] ) || !isset( $_POST[ 'password' ] ) ) {
+  if ( !isset( $_POST[ 'id' ] ) || !isset( $_POST[ 'apellidos' ] ) || !isset( $_POST[ 'nombres' ] ) || !isset( $_POST[ 'ci' ] ) || !isset( $_POST[ 'fecha_nac' ] ) || !isset( $_POST[ 'email' ] ) || !isset( $_POST[ 'password' ] ) || !isset( $_POST[ 'rol' ] ) ) {
     echo '<h1> Debe llenar todos los campos </h1>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
@@ -12,6 +12,7 @@
   $fecha_nac = $_POST[ 'fecha_nac' ];
   $email = $_POST[ 'email' ];
   $password = $_POST[ 'password' ];
+  $rol = $_POST[ 'rol' ];
   $usuario = new Usuario();
 
   $usuarioACrear = $usuario -> obtenerUsuarioPorEmail( $email );
@@ -22,7 +23,7 @@
     return;
   }
 
-  $usuario -> actualizarUsuario( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password );
+  $usuario -> actualizarUsuario( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password, $rol );
 
   $usuarioCreada = $usuario -> obtenerUsuarioPorEmail( $email );
 

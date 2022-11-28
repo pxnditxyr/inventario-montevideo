@@ -13,6 +13,7 @@
       $tabla .= '<td>' . $usuario[ 'ci' ] . '</td>';
       $tabla .= '<td>' . $usuario[ 'fecha_nac' ] . '</td>';
       $tabla .= '<td>' . $usuario[ 'email' ] . '</td>';
+      $tabla .= '<td>' . $usuario[ 'rol' ] . '</td>';
       $tabla .= '<td>';
       $tabla .= '<a href="editarUsuario.php?id=' . $usuario[ 'id' ] . '" class="btn btn-warning">Editar</a>';
       $tabla .= '<a href="actions/eliminarUsuario.php?id=' . $usuario[ 'id' ] . '" class="btn btn-danger">Eliminar</a>';
@@ -25,7 +26,7 @@
 
   function usuarios () {
     $usuario = new Usuario();
-    $usuariosObtenidas = $usuario -> obtenerUsuariosHabilitadas();
+    $usuariosObtenidas = $usuario -> obtenerUsuariosHabilitados();
     $tabla = crearTabla( $usuariosObtenidas );
 
     return '

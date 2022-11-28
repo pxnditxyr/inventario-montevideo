@@ -24,7 +24,7 @@
   $usuario -> crearUsuario( $apellidos, $nombres, $ci, $fecha_nac, $email, $password );
 
   $usuarioCreado = $usuario -> existeUsuarioPorEmail( $email );
-  if ( !usuarioCreado ) {
+  if ( !$usuarioCreado ) {
     echo '<h1> No se pudo crear el usuario </h1>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
