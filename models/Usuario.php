@@ -96,5 +96,21 @@
       }
       return $usuarios;
     }
+    public function obtenerUsuarioPorId ( $id ) {
+      $sql = 'SELECT * FROM usuarios WHERE id = ?';
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 's', $id );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $usuario = $resultado -> fetch_assoc();
+      $this -> id = $usuario[ 'id' ];
+      $this -> apellidos = $usuario[ 'apellidos' ];
+      $this -> nombres = $usuario[ 'nombres' ];
+      $this -> ci = $usuario[ 'ci' ];
+      $this -> fecha_nac = $usuario[ 'fecha_nac' ];
+      $this -> email = $usuario[ 'email' ];
+      $this -> rol = $usuario[ 'rol' ];
+      return $usuario;
+    }
   }
 ?>
