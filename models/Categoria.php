@@ -30,6 +30,7 @@
       while ( $categoria = $resultado -> fetch_assoc() ) {
         $categorias[] = $categoria;
       }
+      return $categorias;
     }
     public function obtenerCategoriaPorNombre ( $nombre ) {
       $sql = 'SELECT * FROM categorias WHERE nombre = ? AND estado = 1';

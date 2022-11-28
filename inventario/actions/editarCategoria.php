@@ -1,6 +1,6 @@
 <?php
   require_once '../../models/Categoria.php';
-  if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
+  if ( !isset( $_POST[ 'id' ] ) || !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
     echo '<h1> Debe llenar todos los campos </h1>';
     header( 'refresh: 5; url=../categorias.php' );
     return;
@@ -13,9 +13,12 @@
 
   $existeCategoria = $categoria -> existeCategoria( $nombre );
 
-  if ( strcmp( $existeCategoria[ 'id' ], $_POST[ 'id' ] ) != 0 ) {
+  if ( isset( $existeCategoria[ 'id' ] ) && strcmp( $existeCategoria[ 'id' ], $_POST[ 'id' ] ) != 0 ) {
+    echo json_encode( $existeCategoria[ 'id' ] );
+    echo json_encode( $_POST[ 'id' ] );
+
     echo '<h1> La categoria ya existe </h1>';
-    header( 'refresh: 5; url=../categorias.php' );
+    header( 'refresh: 20; url=../categorias.php' );
     return;
   }
 
