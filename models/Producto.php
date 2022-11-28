@@ -31,7 +31,7 @@
       }
       return $productos;
     }
-    public function obtenerProductosHabilitadas () {
+    public function obtenerProductosHabilitados () {
       $sql = 'SELECT * FROM productos WHERE estado = 1';
       $resultado = $this -> conexion -> obtenerConexion() -> query( $sql );
       $productos = [];
@@ -73,7 +73,7 @@
       }
       return $productos;
     }
-    
+
     public function crearProducto ( $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id ) {
       $sql = 'INSERT INTO productos ( nombre, codigo, detalles, fecha_adquirido, cantidad, precio, categoria_id ) VALUES ( ?, ?, ?, ?, ?, ?, ? )';
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
@@ -98,4 +98,5 @@
       $resultado = $sentencia -> affected_rows;
       return $resultado;
     }
+  }
 ?>

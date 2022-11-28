@@ -48,6 +48,8 @@
       $sentencia -> execute();
       $resultado = $sentencia -> get_result();
       $usuario = $resultado -> fetch_assoc();
+      if ( !isset( $usuario[ 'id' ] ) )
+        return $usuario;
       $this -> id = $usuario[ 'id' ];
       $this -> apellidos = $usuario[ 'apellidos' ];
       $this -> nombres = $usuario[ 'nombres' ];

@@ -49,8 +49,9 @@
             <input type="text" name="nombre" placeholder="nombre">
             <input type="text" name="codigo" placeholder="codigo">
             <input type="text" name="detalles" placeholder="detalles">
-            <input type="date" name="fecha_adiquirido" placeholder="Fecha de Nacimiento">
+            <input type="date" name="fecha_adiquirido" placeholder="Fecha de adquisicion" value="' . date( 'Y-m-d' ) . '">
             <input type="number" name="cantidad" placeholder="cantidad">
+            <input type="number" name="precio" placeholder="Precio">
             <select name="categoria_id">
               ' . $opcionesDeCategorias . '
             </select>
