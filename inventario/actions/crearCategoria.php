@@ -14,7 +14,7 @@
   $existeCategoria = $categoria -> existeCategoria( $nombre );
   if ( isset( $existeCategoria[ 'id' ] ) ) {
     echo '<h1> La categoria ya existe </h1>';
-    header( 'refresh: 5; url=../index.php' );
+    header( 'refresh: 5; url=../categorias.php' );
     return;
   }
 
@@ -23,7 +23,7 @@
   $categoriaCreada = $categoria -> obtenerCategoriaPorNombre( $nombre );
   if ( !isset( $categoriaCreada[ 'id' ] ) ) {
     echo '<h1> No se pudo crear la categoria </h1>';
-    header( 'refresh: 5; url=../index.php' );
+    header( 'refresh: 5; url=../categorias.php' );
     return;
   }
   header( 'Location: ../categorias.php' )
