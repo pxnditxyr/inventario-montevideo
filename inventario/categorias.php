@@ -11,8 +11,8 @@
       $tabla .= '<td>' . $categoria[ 'descripcion' ] . '</td>';
       $tabla .= '<td>' . $categoria[ 'estado' ] . '</td>';
       $tabla .= '<td>';
-      $tabla .= '<a href="editar.php?id=' . $categoria[ 'id' ] . '" class="btn btn-warning">Editar</a>';
-      $tabla .= '<a href="eliminar.php?id=' . $categoria[ 'id' ] . '" class="btn btn-danger">Eliminar</a>';
+      $tabla .= '<a href="editarCategoria.php?id=' . $categoria[ 'id' ] . '" class="btn btn-warning">Editar</a>';
+      $tabla .= '<a href="eliminarCategoria.php?id=' . $categoria[ 'id' ] . '" class="btn btn-danger">Eliminar</a>';
       $tabla .= '</td>';
       $tabla .= '</tr>';
     }
@@ -41,6 +41,7 @@
                 <th>Nombre</th>
                 <th>Detalles</th>
                 <th>Descripcion</th>
+                <th>Estado</th>
                 <th>Acciones</th>
               </tr>
             </thead>

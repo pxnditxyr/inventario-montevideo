@@ -50,6 +50,15 @@
       $categoria = $resultado -> fetch_assoc();
       return $categoria;
     }
+    public function obtenerCategoriaPorId ( $id ) {
+      $sql = 'SELECT * FROM categorias WHERE id = ? AND estado = 1';
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 'i', $id );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $categoria = $resultado -> fetch_assoc();
+      return $categoria;
+    }
 
     public function crearCategoria ( $nombre, $detalles, $descripcion ) {
       $sql = "INSERT INTO categorias ( id, nombre, detalles, descripcion, estado, created_at, updated_at )
