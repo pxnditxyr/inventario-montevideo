@@ -59,7 +59,7 @@
     }
 
     public function crearUsuario ( $apellidos, $nombres, $ci, $fecha_nac, $email, $password, $rol = 'usuario' ) {
-      $sql = "INSERT INTO usuarios ( id, apellidos, nombres, fecha_nac, ci, email, password, rol, estado, created_at, upated_at )
+      $sql = "INSERT INTO usuarios ( id, apellidos, nombres, fecha_nac, ci, email, password, rol, estado, created_at, updated_at )
               VALUES ( 'NULL', ?, ?, ?, ?, ?, ?, ?, 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "' );";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
 
@@ -71,7 +71,7 @@
       return $resultado;
     }
     public function actualizarUsuario ( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password, $rol = 'usuario' ) {
-      $sql = "UPDATE usuarios SET apellidos = ?, nombres = ?, fecha_nac = ?, ci = ?, email = ?, password = ?, rol = ?, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
+      $sql = "UPDATE usuarios SET apellidos = ?, nombres = ?, fecha_nac = ?, ci = ?, email = ?, password = ?, rol = ?, updated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
       $sentencia -> bind_param( 'ssssssss', $apellidos, $nombres, $fecha_nac, $ci, $email, $password, $rol, $id );
       $sentencia -> execute();
@@ -80,7 +80,7 @@
       return $resultado;
     }
     public function eliminarUsuario ( $id ) {
-      $sql = "UPDATE usuarios SET estado = 0, upated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
+      $sql = "UPDATE usuarios SET estado = 0, updated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?;";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
       $sentencia -> bind_param( 's', $id );
       $sentencia -> execute();
