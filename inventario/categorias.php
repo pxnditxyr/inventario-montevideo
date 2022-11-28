@@ -1,20 +1,20 @@
-<?php 
+<?php
   require_once './layouts/layout.php';
   require_once '../models/Categoria.php';
 
-  function crearTabla = ( $categorias ) {
+  function crearTabla ( $categorias ) {
     $tabla = '';
     foreach ( $categorias as $categoria ) {
-      $tabla += '<tr>';
-      $tabla += '<td>' . $categoria->id . '</td>';
-      $tabla += '<td>' . $categoria->nombre . '</td>';
-      $tabla += '<td>' . $categoria->descripcion . '</td>';
-      $tabla += '<td>' . $categoria->estado . '</td>';
-      $tabla += '<td>';
-      $tabla += '<a href="editar.php?id=' . $categoria->id . '" class="btn btn-warning">Editar</a>';
-      $tabla += '<a href="eliminar.php?id=' . $categoria->id . '" class="btn btn-danger">Eliminar</a>';
-      $tabla += '</td>';
-      $tabla += '</tr>';
+      $tabla .= '<tr>';
+      $tabla .= '<td>' . $categoria[ 'id' ] . '</td>';
+      $tabla .= '<td>' . $categoria[ 'nombre' ] . '</td>';
+      $tabla .= '<td>' . $categoria[ 'descripcion' ] . '</td>';
+      $tabla .= '<td>' . $categoria[ 'estado' ] . '</td>';
+      $tabla .= '<td>';
+      $tabla .= '<a href="editar.php?id=' . $categoria[ 'id' ] . '" class="btn btn-warning">Editar</a>';
+      $tabla .= '<a href="eliminar.php?id=' . $categoria[ 'id' ] . '" class="btn btn-danger">Eliminar</a>';
+      $tabla .= '</td>';
+      $tabla .= '</tr>';
     }
     return $tabla;
   }
@@ -24,7 +24,7 @@
     $categoriasObtenidas = $categoria -> obtenerCategorias();
     $tabla = crearTabla( $categoriasObtenidas );
 
-    
+
     return '
         <div>
           <form action="actions/crearCategoria.php" method="POST">
@@ -52,9 +52,8 @@
 
       ';
   }
-  
+
   $categorias = categorias();
-  $categoriasObtenidas = 
   echo layout( 'Categorias', $categorias );
 ?>
 

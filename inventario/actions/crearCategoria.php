@@ -26,5 +26,5 @@
     header( 'refresh: 5; url=../index.php' );
     return;
   }
-
+  header( 'Location: ../categorias.php' )
 ?>

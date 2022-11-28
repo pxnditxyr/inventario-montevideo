@@ -21,6 +21,7 @@
       while ( $categoria = $resultado -> fetch_assoc() ) {
         $categorias[] = $categoria;
       }
+      return $categorias;
     }
     public function obtenerCategoriasHabilitadas () {
       $sql = 'SELECT * FROM categorias WHERE estado = 1';
@@ -51,7 +52,7 @@
     }
 
     public function crearCategoria ( $nombre, $detalles, $descripcion ) {
-      $sql = "INSERT INTO categorias ( id, nombre, detalles, descripcion, estado, created_at, updated_at ) 
+      $sql = "INSERT INTO categorias ( id, nombre, detalles, descripcion, estado, created_at, updated_at )
               VALUES ( 'NULL', ?, ?, ?, 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "' );";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
       $sentencia -> bind_param( 'sss', $nombre, $detalles, $descripcion );
