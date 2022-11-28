@@ -29,6 +29,7 @@
       while ( $producto = $resultado -> fetch_assoc() ) {
         $productos[] = $producto;
       }
+      return $productos;
     }
     public function obtenerProductosHabilitadas () {
       $sql = 'SELECT * FROM productos WHERE estado = 1';
@@ -37,6 +38,7 @@
       while ( $producto = $resultado -> fetch_assoc() ) {
         $productos[] = $producto;
       }
+      return $productos;
     }
     public function obtenerProductosPorNombreOCodigo ( $dato ) {
       $sql = 'SELECT * FROM productos WHERE nombre LIKE ? OR codigo LIKE ? AND estado = 1';
