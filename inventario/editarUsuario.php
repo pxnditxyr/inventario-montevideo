@@ -22,17 +22,30 @@
     $inputs = '';
     foreach ( $usuario as $key => $value ) {
       if ( strcmp( $key, 'id' ) != 0 && strcmp( $key, 'estado' ) != 0 && strcmp( $key, 'created_at' ) != 0 && strcmp( $key, 'updated_at' ) != 0 ) {
-        if ( strcmp( $key, 'fecha_nacimiento' ) == 0 ) {
+        // if type of value is date input type is date with regex
+        $regexIsDate = preg_match( '/\d{4}-\d{2}-\d{2}/', $value );
+        if ( $regexIsDate ) {
           $inputs .= '<div class="form-group">
                         <label for="' . $key . '">' . ucfirst( $key ) . '</label>
-                        <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
+                        <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required>
                       </div>';
         } else {
           $inputs .= '<div class="form-group">
                         <label for="' . $key . '">' . ucfirst( $key ) . '</label>
-                        <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
+                        <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required>
                       </div>';
         }
+        // if ( strcmp( $key, 'fecha_nacimiento' ) == 0 ) {
+        //   $inputs .= '<div class="form-group">
+        //                 <label for="' . $key . '">' . ucfirst( $key ) . '</label>
+        //                 <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
+        //               </div>';
+        // } else {
+        //   $inputs .= '<div class="form-group">
+        //                 <label for="' . $key . '">' . ucfirst( $key ) . '</label>
+        //                 <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
+        //               </div>';
+        // }
       }
     }
     return $inputs;
