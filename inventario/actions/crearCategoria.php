@@ -1,5 +1,5 @@
 <?php
-  require_once 'Categoria.php';
+  require_once '../models/Categoria.php';
   if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
     echo '<h1> Debe llenar todos los campos </h1>';
     header( 'refresh: 5; url=../index.php' );
