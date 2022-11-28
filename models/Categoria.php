@@ -72,7 +72,7 @@
     public function actualizarCategoria ( $id, $nombre, $detalles, $descripcion ) {
       $sql = "UPDATE categorias SET nombre = ?, detalles = ?, descripcion = ?, updated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
-      $sentencia -> bind_param( 'sssi', $nombre, $detalles, $descripcion, $id );
+      $sentencia -> bind_param( 'ssss', $nombre, $detalles, $descripcion, $id );
       $sentencia -> execute();
       $resultado = $sentencia -> get_result();
       return $resultado;

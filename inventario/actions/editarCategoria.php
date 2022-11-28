@@ -19,7 +19,7 @@
     return;
   }
 
-  $categoria -> actualizarCategoria( $nombre, $descripcion, $detalles );
+  $categoria -> actualizarCategoria( $_POST[ 'id' ], $nombre, $descripcion, $detalles );
 
   $categoriaCreada = $categoria -> obtenerCategoriaPorNombre( $nombre );
   if ( !isset( $categoriaCreada[ 'id' ] ) ) {
