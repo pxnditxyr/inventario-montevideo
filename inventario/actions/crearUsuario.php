@@ -25,7 +25,7 @@
 
   $usuarioCreado = $usuario -> existeUsuarioPorEmail( $email );
   if ( !usuarioCreado ) {
-    echo '<h1> No se pudo actualizar la usuario </h1>';
+    echo '<h1> No se pudo crear el usuario </h1>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
   }

@@ -30,6 +30,17 @@
       $usuario = $resultado -> fetch_assoc();
       return isset( $usuario[ 'email' ] );
     }
+
+    public function obtenerUsuarioPorEmail ( $email ) {
+      $sql = 'SELECT * FROM usuarios WHERE email = ? AND estado = 1';
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 's', $email );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $usuario = $resultado -> fetch_assoc();
+      return $usuario;
+    }
+
     public function obtenerUsuarioPorEmailYPassword ( $email, $password ) {
       $sql = 'SELECT * FROM usuarios WHERE email = ? AND password = ? AND estado = 1';
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );

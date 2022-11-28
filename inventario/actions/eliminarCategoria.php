@@ -13,7 +13,7 @@
   $existeCategoria = $categoria -> obtenerCategoriaPorId( $id );
 
   if ( !isset( $existeCategoria[ 'id' ] ) ) {
-    echo '<h1> La categoria ya existe </h1>';
+    echo '<h1> La categoria no existe </h1>';
     header( 'refresh: 5; url=../categorias.php' );
     return;
   }
@@ -25,6 +25,5 @@
     header( 'refresh: 5; url=../categorias.php' );
     return;
   }
-  echo '<h1> Categoria eliminada </h1>';
   header( 'Location: ../categorias.php' );
 ?>

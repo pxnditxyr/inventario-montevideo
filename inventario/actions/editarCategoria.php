@@ -14,9 +14,6 @@
   $existeCategoria = $categoria -> existeCategoria( $nombre );
 
   if ( isset( $existeCategoria[ 'id' ] ) && strcmp( $existeCategoria[ 'id' ], $_POST[ 'id' ] ) != 0 ) {
-    echo json_encode( $existeCategoria[ 'id' ] );
-    echo json_encode( $_POST[ 'id' ] );
-
     echo '<h1> La categoria ya existe </h1>';
     header( 'refresh: 20; url=../categorias.php' );
     return;

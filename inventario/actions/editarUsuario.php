@@ -1,34 +1,35 @@
 <?php
-  require_once '../../models/Categoria.php';
-  if ( !isset( $_POST[ 'id' ] ) || !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
+  require_once '../../models/Usuario.php';
+  if ( !isset( $_POST[ 'id' ] ) || !isset( $_POST[ 'apellidos' ] ) || !isset( $_POST[ 'nombres' ] ) || !isset( $_POST[ 'ci' ] ) || !isset( $_POST[ 'fecha_nac' ] ) || !isset( $_POST[ 'email' ] ) || !isset( $_POST[ 'password' ] ) ) {
     echo '<h1> Debe llenar todos los campos </h1>';
-    header( 'refresh: 5; url=../categorias.php' );
+    header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
-  $nombre = $_POST[ 'nombre' ];
-  $descripcion = $_POST[ 'descripcion' ];
-  $detalles = $_POST[ 'detalles' ];
+  $id = $_POST[ 'id' ];
+  $apellidos = $_POST[ 'apellidos' ];
+  $nombres = $_POST[ 'nombres' ];
+  $ci = $_POST[ 'ci' ];
+  $fecha_nac = $_POST[ 'fecha_nac' ];
+  $email = $_POST[ 'email' ];
+  $password = $_POST[ 'password' ];
+  $usuario = new Usuario();
 
-  $categoria = new Categoria();
+  $usuarioACrear = $usuario -> obtenerUsuarioPorEmail( $email );
 
-  $existeCategoria = $categoria -> existeCategoria( $nombre );
-
-  if ( isset( $existeCategoria[ 'id' ] ) && strcmp( $existeCategoria[ 'id' ], $_POST[ 'id' ] ) != 0 ) {
-    echo json_encode( $existeCategoria[ 'id' ] );
-    echo json_encode( $_POST[ 'id' ] );
-
-    echo '<h1> La categoria ya existe </h1>';
-    header( 'refresh: 20; url=../categorias.php' );
+  if ( isset( $usuarioACrear[ 'id' ] ) && $usuarioACrear[ 'id' ] != $id ) {
+    echo '<h1> La usuario ya existe </h1>';
+    header( 'refresh: 20; url=../usuarios.php' );
     return;
   }
 
-  $categoria -> actualizarCategoria( $_POST[ 'id' ], $nombre, $descripcion, $detalles );
+  $usuario -> actualizarUsuario( $id, $apellidos, $nombres, $ci, $fecha_nac, $email, $password );
 
-  $categoriaCreada = $categoria -> obtenerCategoriaPorNombre( $nombre );
-  if ( !isset( $categoriaCreada[ 'id' ] ) ) {
-    echo '<h1> No se pudo crear la categoria </h1>';
-    header( 'refresh: 5; url=../categorias.php' );
+  $usuarioCreada = $usuario -> obtenerUsuarioPorEmail( $email );
+
+  if ( !isset( $usuarioCreada[ 'id' ] ) ) {
+    echo '<h1> No se pudo crear la usuario </h1>';
+    header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
-  header( 'Location: ../categorias.php' );
+  header( 'Location: ../usuarios.php' );
 ?>

@@ -12,7 +12,7 @@
   $existeUsuario = $usuario -> obtenerUsuarioPorId( $id );
 
   if ( !isset( $existeUsuario[ 'id' ] ) ) {
-    echo '<h1> La usuario ya existe </h1>';
+    echo '<h1> La usuario no existe </h1>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
