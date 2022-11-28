@@ -1,5 +1,5 @@
 <?php
-  require_once '../models/Categoria.php';
+  require_once '../../models/Categoria.php';
   if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
     echo '<h1> Debe llenar todos los campos </h1>';
     header( 'refresh: 5; url=../index.php' );
@@ -8,7 +8,7 @@
   $nombre = $_POST[ 'nombre' ];
   $descripcion = $_POST[ 'descripcion' ];
   $detalles = $_POST[ 'detalles' ];
-  
+
   $categoria = new Categoria();
 
   $existeCategoria = $categoria -> existeCategoria( $nombre );
@@ -18,7 +18,7 @@
     return;
   }
 
-  $categoria -> crearCategoria( $nombre, $codigo, $descripcion, $detalles );
+  $categoria -> crearCategoria( $nombre, $descripcion, $detalles );
 
   $categoriaCreada = $categoria -> obtenerCategoriaPorNombre( $nombre );
   if ( !isset( $categoriaCreada[ 'id' ] ) ) {
@@ -26,5 +26,5 @@
     header( 'refresh: 5; url=../index.php' );
     return;
   }
-  
+
 ?>
