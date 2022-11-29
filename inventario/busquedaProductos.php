@@ -3,6 +3,11 @@
   require_once '../models/Producto.php';
   require_once '../models/Categoria.php';
 
+  if ( !isset( $_POST[ 'search' ] ) ) {
+    header( 'Location: productos.php' );
+    return;
+  }
+
   function crearTabla ( $productos ) {
     $tabla = '';
     $i = 1;
@@ -41,7 +46,7 @@
     $productosObtenidos = $producto -> obtenerProductosHabilitados();
     $tabla = crearTabla( $productosObtenidos );
     $categoria = new Categoria();
-    $categorias = $categoria -> obtenerCategoriasHabilitadas();
+    $categorias = $categoria -> obtenerProductosPorNombreOCategoria( $_POST[ 'search' ] );
     $opcionesDeCategorias = crearOpcionesDeCategorias( $categorias );
 
     return '
