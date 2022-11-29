@@ -43,10 +43,10 @@
 
   function productos () {
     $producto = new Producto();
-    $productosObtenidos = $producto -> obtenerProductosHabilitados();
+    $productosObtenidos = $producto -> obtenerProductosPorNombreOCodigo( $_POST[ 'search' ] );
     $tabla = crearTabla( $productosObtenidos );
     $categoria = new Categoria();
-    $categorias = $categoria -> obtenerProductosPorNombreOCategoria( $_POST[ 'search' ] );
+    $categorias = $categoria -> obtenerCategoriasHabilitadas();
     $opcionesDeCategorias = crearOpcionesDeCategorias( $categorias );
 
     return '
@@ -69,7 +69,7 @@
           <form action="busquedaProductos.php" method="POST">
             <div>
               <label for="search">Buscar</label>
-              <input type="text" name="search" id="search">
+              <input type="text" name="search" id="search" value="' . $_POST[ 'search' ] . '">
             </div>
             <button>Buscar</button>
           </form>

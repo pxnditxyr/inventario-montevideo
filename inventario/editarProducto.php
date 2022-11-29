@@ -24,10 +24,14 @@
     foreach ( $producto as $key => $value ) {
       if ( strcmp( $key, 'categoria' ) == 0 ) {
         $categoria = new Categoria();
-        $categorias = $categoria -> obtenerCategorias();
+        $categorias = $categoria -> obtenerCategoriasHabilitadas();
         $options = '';
         foreach ( $categorias as $categoria ) {
-          $options .= '<option value="' . $categoria[ 'id' ] . '">' . $categoria[ 'nombre' ] . '</option>';
+          if ( strcmp( $value, $categoria[ 'id' ] ) == 0 ) {
+            $options .= '<option value="' . $categoria[ 'id' ] . '" selected="selected">' . $categoria[ 'nombre' ] . '</option>';
+          } else {
+            $options .= '<option value="' . $categoria[ 'id' ] . '">' . $categoria[ 'nombre' ] . '</option>';
+          }
         }
         $inputs .= '<div class="form-group">
                       <label for="categoria">Categoria</label>
