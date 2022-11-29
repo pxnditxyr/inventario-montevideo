@@ -17,7 +17,16 @@
 
   $producto = new Producto();
 
+  $existeProducto = $producto -> obtenerProductoPorCodigo( $codigo );
+  
+  if ( isset( $existeProducto[ 'id' ] ) ) {
+    echo '<h1> El producto ya existe </h1>';
+    header( 'refresh: 5; url=../productos.php' );
+    return;
+  }
+
   $producto -> crearProducto( $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id );
+
 
   $productoCreado = $producto -> obtenerProductoPorCodigo( $codigo );
   if ( !$productoCreado ) {

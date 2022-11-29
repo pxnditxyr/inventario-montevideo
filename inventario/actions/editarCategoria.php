@@ -15,7 +15,7 @@
 
   if ( isset( $existeCategoria[ 'id' ] ) && strcmp( $existeCategoria[ 'id' ], $_POST[ 'id' ] ) != 0 ) {
     echo '<h1> La categoria ya existe </h1>';
-    header( 'refresh: 20; url=../categorias.php' );
+    header( 'refresh: 5; url=../categorias.php' );
     return;
   }
 

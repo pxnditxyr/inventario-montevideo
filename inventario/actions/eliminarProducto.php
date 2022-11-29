@@ -1,28 +1,28 @@
 <?php
-  require_once '../../models/Categoria.php';
+  require_once '../../models/Producto.php';
   if ( !isset( $_GET[ 'id' ] ) ) {
     echo '<h1> Ha ocurrido un error </h1>';
-    header( 'Refresh: 3; URL=categorias.php' );
+    header( 'Refresh: 3; URL=productos.php' );
     return;
   }
 
   $id = $_GET[ 'id' ];
 
-  $categoria = new Categoria();
-  $existeCategoria = $categoria -> obtenerCategoriaPorId( $id );
+  $producto = new Producto();
+  $existeProducto = $producto -> obtenerProductoPorId( $id );
 
-  if ( !isset( $existeCategoria[ 'id' ] ) ) {
-    echo '<h1> La categoria no existe </h1>';
-    header( 'refresh: 5; url=../categorias.php' );
+  if ( !isset( $existeProducto[ 'id' ] ) ) {
+    echo '<h1> La producto no existe </h1>';
+    header( 'refresh: 5; url=../productos.php' );
     return;
   }
 
-  $categoria -> eliminarCategoria( $id );
-  $existeCategoria = $categoria -> obtenerCategoriaPorId( $id );
-  if ( isset( $existeCategoria[ 'id' ] ) ) {
+  $producto -> eliminarProducto( $id );
+  $existeProducto = $producto -> obtenerProductoPorId( $id );
+  if ( isset( $existeProducto[ 'id' ] ) ) {
     echo '<h1> Ha ocurrido un error </h1>';
-    header( 'refresh: 5; url=../categorias.php' );
+    header( 'refresh: 5; url=../productos.php' );
     return;
   }
-  header( 'Location: ../categorias.php' );
+  header( 'Location: ../productos.php' );
 ?>

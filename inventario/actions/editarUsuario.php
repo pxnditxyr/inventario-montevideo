@@ -19,7 +19,7 @@
 
   if ( isset( $usuarioACrear[ 'id' ] ) && $usuarioACrear[ 'id' ] != $id ) {
     echo '<h1> La usuario ya existe </h1>';
-    header( 'refresh: 20; url=../usuarios.php' );
+    header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
 
