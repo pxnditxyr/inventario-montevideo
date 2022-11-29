@@ -86,15 +86,17 @@
     }
 
     public function crearProducto ( $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id ) {
-      $sql = 'INSERT INTO productos ( nombre, codigo, detalles, fecha_adquirido, cantidad, precio, categoria_id ) VALUES ( ?, ?, ?, ?, ?, ?, ? )';
+      echo json_encode([$nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id]);
+      $sql = "INSERT INTO productos ( nombre, codigo, detalles, fecha_adquirido, cantidad, precio, categoria, estado, created_at, updated_at )
+            VALUES ( ?, ?, ?, ?, ?, ?, ?, 1, '" . date( 'Y-m-d h:i:s' ) .  "', '" . date( 'Y-m-d h:i:s' ) . "');";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
-      $sentencia -> bind_param( 'ssssidi', $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id );
+      $sentencia -> bind_param( 'sssssss', $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id );
       $sentencia -> execute();
       $resultado = $sentencia -> affected_rows;
       return $resultado;
     }
     public function actualizarProducto ( $id, $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id ) {
-      $sql = 'UPDATE productos SET nombre = ?, codigo = ?, detalles = ?, fecha_adquirido = ?, cantidad = ?, precio = ?, categoria_id = ? WHERE id = ?';
+      $sql = "UPDATE productos SET nombre = ?, codigo = ?, detalles = ?, fecha_adquirido = ?, cantidad = ?, precio = ?, categoria = ?, updated_at = '" . date( 'Y-m-d h:i:s' ) . "' WHERE id = ?";
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
       $sentencia -> bind_param( 'ssssidii', $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria_id, $id );
       $sentencia -> execute();
