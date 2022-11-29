@@ -41,7 +41,10 @@
       return $productos;
     }
     public function obtenerProductosPorNombreOCodigo ( $dato ) {
-      $sql = 'SELECT * FROM productos WHERE nombre LIKE ? OR codigo LIKE ? AND estado = 1';
+    $sql = 'SELECT * FROM productos WHERE nombre LIKE 
+    %?% OR codigo LIKE %?% OR nombre LIKE %? OR codigo LIKE %? OR nombre LIKE ?% OR codigo LIKE ?%
+    OR nombre LIKE ? OR codigo LIKE ?
+    AND estado = 1';
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
       $sentencia -> bind_param( 'ss', $dato, $dato );
       $sentencia -> execute();
