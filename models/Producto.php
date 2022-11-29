@@ -52,6 +52,17 @@
       }
       return $productos;
     }
+
+    public function obtenerProductoPorCodigo ( $codigo ) {
+      $sql = 'SELECT * FROM productos WHERE codigo = ?';
+      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
+      $sentencia -> bind_param( 's', $codigo );
+      $sentencia -> execute();
+      $resultado = $sentencia -> get_result();
+      $producto = $resultado -> fetch_assoc();
+      return $producto;
+    }
+
     public function obtenerProductoPorId ( $id ) {
       $sql = 'SELECT * FROM productos WHERE id = ?';
       $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
