@@ -42,13 +42,15 @@
     }
     public function obtenerProductosPorNombreOCodigo ( $dato ) {
     $sql = 'SELECT * FROM productos WHERE nombre LIKE 
-    %?% OR codigo LIKE %?% OR nombre LIKE %? OR codigo LIKE %? OR nombre LIKE ?% OR codigo LIKE ?%
-    OR nombre LIKE ? OR codigo LIKE ?
+      %' . $dato . '% OR codigo LIKE 
+      %' . $dato . '% OR nombre LIKE
+      %' . $dato . ' OR codigo LIKE 
+      %' . $dato.  ' OR nombre LIKE 
+      ' . $dato . '% OR codigo LIKE 
+      ' . $dato . '% OR nombre LIKE ' . $dato . ' OR codigo LIKE ' . $dato . '
     AND estado = 1';
-      $sentencia = $this -> conexion -> obtenerConexion() -> prepare( $sql );
-      $sentencia -> bind_param( 'ss', $dato, $dato );
-      $sentencia -> execute();
-      $resultado = $sentencia -> get_result();
+
+      $resultado = $this -> conexion -> obtenerConexion() -> query( $sql );
       $productos = [];
       while ( $producto = $resultado -> fetch_assoc() ) {
         $productos[] = $producto;
