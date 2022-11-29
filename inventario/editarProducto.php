@@ -22,11 +22,19 @@
     $inputs = '';
     foreach ( $producto as $key => $value ) {
       if ( strcmp( $key, 'id' ) != 0 && strcmp( $key, 'estado' ) != 0 && strcmp( $key, 'created_at' ) != 0 && strcmp( $key, 'updated_at' ) != 0 ) {
-
-        $inputs .= '<div class="form-group">
-          <label for="' . $key . '">' . $key . '</label>
-          <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
-        </div>';
+        // if type of value is date input type is date with regex
+        $regexIsDate = preg_match( '/\d{4}-\d{2}-\d{2}/', $value );
+        if ( $regexIsDate ) {
+          $inputs .= '<div class="form-group">
+                        <label for="' . $key . '">' . ucfirst( $key ) . '</label>
+                        <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required>
+                      </div>';
+        } else {
+          $inputs .= '<div class="form-group">
+                        <label for="' . $key . '">' . ucfirst( $key ) . '</label>
+                        <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required>
+                      </div>';
+        }
       }
     }
     return $inputs;

@@ -14,7 +14,7 @@
     header( 'refresh: 5; url=../productos.php' );
     return;
   }
-  
+
   $id = $_POST[ 'id' ];
   $nombre = $_POST[ 'nombre' ];
   $codigo = $_POST[ 'codigo' ];
@@ -36,9 +36,9 @@
 
   $producto -> actualizarProducto( $_POST[ 'id' ], $nombre, $codigo, $detalles, $fecha_adquirido, $cantidad, $precio, $categoria );
 
-  $productoCreada = $producto -> obtenerProductoPorCodigo( $nombre );
+  $productoCreado = $producto -> obtenerProductoPorCodigo( $codigo );
 
-  if ( !isset( $productoCreada[ 'id' ] ) ) {
+  if ( !isset( $productoCreado[ 'id' ] ) ) {
     echo '<h1> No se pudo crear la producto </h1>';
     header( 'refresh: 5; url=../productos.php' );
     return;

@@ -35,17 +35,6 @@
                         <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required>
                       </div>';
         }
-        // if ( strcmp( $key, 'fecha_nacimiento' ) == 0 ) {
-        //   $inputs .= '<div class="form-group">
-        //                 <label for="' . $key . '">' . ucfirst( $key ) . '</label>
-        //                 <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
-        //               </div>';
-        // } else {
-        //   $inputs .= '<div class="form-group">
-        //                 <label for="' . $key . '">' . ucfirst( $key ) . '</label>
-        //                 <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '">
-        //               </div>';
-        // }
       }
     }
     return $inputs;
