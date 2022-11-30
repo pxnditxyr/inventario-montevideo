@@ -1,9 +1,9 @@
-<?php 
+<?php
   require_once './layouts/layout.php';
-  
+
   function login () {
     return '
-    <div style="background-image: ( assets/images/auth-image-1.jpg )" class="flex flex-col items-center justify-center h-full w-full bg-cover bg-center">
+    <div style="background-image: url( assets/images/auth-image-1.jpg )" class="flex flex-col items-center justify-center h-full w-full bg-cover bg-center">
       <form action="actions/login.php" method="post" class="flex flex-col items-center justify-center w-1/2">
         <div>
             <label for="email"> Email: </label>
@@ -21,5 +21,5 @@
       ';
   }
   $login = login();
-  echo layout( 'Login', $login );
+  echo layout( '', $login );
 ?>
