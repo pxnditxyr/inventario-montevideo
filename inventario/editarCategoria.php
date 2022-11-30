@@ -1,3 +1,4 @@
+<script src="https://cdn.tailwindcss.com"></script>
 <?php
   include_once 'layouts/layout.php';
   if ( !isset( $_GET[ 'id' ] ) ) {
