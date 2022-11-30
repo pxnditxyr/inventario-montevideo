@@ -1,3 +1,4 @@
+<script src="https://cdn.tailwindcss.com"></script>
 <?php
   require_once '../../models/Usuario.php';
   if ( !isset( $_POST[ 'apellidos' ] ) || !isset( $_POST[ 'nombres' ] ) || !isset( $_POST[ 'ci' ] ) || !isset( $_POST[ 'fecha_nac' ] ) || !isset( $_POST[ 'email' ] ) || !isset( $_POST[ 'password' ] ) ) {

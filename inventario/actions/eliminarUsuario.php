@@ -1,3 +1,4 @@
+<script src="https://cdn.tailwindcss.com"></script>
 <?php
   require_once '../../models/Usuario.php';
   if ( !isset( $_GET[ 'id' ] ) ) {

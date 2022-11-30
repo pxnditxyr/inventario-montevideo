@@ -1,7 +1,9 @@
+<script src="https://cdn.tailwindcss.com"></script>
 <?php
   require_once '../../models/Categoria.php';
   if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'descripcion' ] ) || !isset( $_POST[ 'detalles' ] ) ) {
   echo '
+
     <div class="flex justify-center">
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
         <strong class="font-bold">Error!</strong>

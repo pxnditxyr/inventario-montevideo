@@ -1,3 +1,4 @@
+<script src="https://cdn.tailwindcss.com"></script>
 <?php
   require_once '../../models/Producto.php';
   if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'codigo' ] ) || !isset( $_POST[ 'detalles' ] ) || !isset( $_POST['fecha_adquirido'] ) || !isset( $_POST['cantidad'] ) || !isset( $_POST['precio'] ) || !isset( $_POST['categoria_id'] ) ) {
@@ -23,7 +24,7 @@
   $producto = new Producto();
 
   $existeProducto = $producto -> obtenerProductoPorCodigo( $codigo );
-  
+
   if ( isset( $existeProducto[ 'id' ] ) ) {
     echo '<div class="flex justify-center">
       <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
