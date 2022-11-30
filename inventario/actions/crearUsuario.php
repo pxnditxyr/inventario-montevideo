@@ -1,7 +1,12 @@
 <?php
   require_once '../../models/Usuario.php';
   if ( !isset( $_POST[ 'apellidos' ] ) || !isset( $_POST[ 'nombres' ] ) || !isset( $_POST[ 'ci' ] ) || !isset( $_POST[ 'fecha_nac' ] ) || !isset( $_POST[ 'email' ] ) || !isset( $_POST[ 'password' ] ) ) {
-    echo '<h1> Debe llenar todos los campos </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se han recibido los datos necesarios.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
@@ -16,7 +21,12 @@
 
   $existeUsuario = $usuario -> existeUsuarioPorEmail( $email );
   if ( $existeUsuario ) {
-    echo '<h1> La usuario ya existe </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">El usuario ya existe.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
   }
@@ -25,7 +35,12 @@
 
   $usuarioCreado = $usuario -> existeUsuarioPorEmail( $email );
   if ( !$usuarioCreado ) {
-    echo '<h1> No se pudo crear el usuario </h1>';
+  echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se ha podido crear el usuario.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../usuarios.php' );
     return;
   }

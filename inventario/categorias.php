@@ -7,12 +7,10 @@
     $i = 1;
     foreach ( $categorias as $categoria ) {
       $tabla .= '<tr>';
-      // $tabla .= '<td>' . $categoria[ 'id' ] . '</td>';
       $tabla .= '<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">' . $i . '</td>';
       $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $categoria[ 'nombre' ] . '</td>';
       $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $categoria[ 'detalles' ] . '</td>';
       $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $categoria[ 'descripcion' ] . '</td>';
-      //$tabla .= '<td>' . $categoria[ 'estado' ] . '</td>';
       $tabla .= '<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">';
       $tabla .= '<a href="editarCategoria.php?id=' . $categoria[ 'id' ] . '" class="text-indigo-600 hover:text-indigo-900">Editar</a>';
       $tabla .= '<a href="actions/eliminarCategoria.php?id=' . $categoria[ 'id' ] . '" class="text-indigo-600 hover:text-indigo-900 ml-4">Eliminar</a>';

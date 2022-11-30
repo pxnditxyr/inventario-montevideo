@@ -1,7 +1,13 @@
 <?php
   require_once '../../models/Producto.php';
   if ( !isset( $_GET[ 'id' ] ) ) {
-    echo '<h1> Ha ocurrido un error </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se han recibido los datos necesarios.</span>
+      </div>
+    </div>';
+
     header( 'Refresh: 3; URL=productos.php' );
     return;
   }
@@ -12,7 +18,12 @@
   $existeProducto = $producto -> obtenerProductoPorId( $id );
 
   if ( !isset( $existeProducto[ 'id' ] ) ) {
-    echo '<h1> La producto no existe </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">El producto no existe.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../productos.php' );
     return;
   }
@@ -20,7 +31,12 @@
   $producto -> eliminarProducto( $id );
   $existeProducto = $producto -> obtenerProductoPorId( $id );
   if ( isset( $existeProducto[ 'id' ] ) ) {
-    echo '<h1> Ha ocurrido un error </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se ha podido eliminar el producto.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../productos.php' );
     return;
   }

@@ -3,7 +3,12 @@
   if ( !isset( $_POST[ 'nombre' ] ) || !isset( $_POST[ 'codigo' ] ) || !isset( $_POST[ 'detalles' ] ) || !isset( $_POST['fecha_adquirido'] ) || !isset( $_POST['cantidad'] ) || !isset( $_POST['precio'] ) || !isset( $_POST['categoria_id'] ) ) {
     echo json_encode( $_POST );
 
-    echo '<h1> Debe llenar todos los campos </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se han recibido los datos necesarios.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../productos.php' );
     return;
   }
@@ -20,7 +25,12 @@
   $existeProducto = $producto -> obtenerProductoPorCodigo( $codigo );
   
   if ( isset( $existeProducto[ 'id' ] ) ) {
-    echo '<h1> El producto ya existe </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">El producto ya existe.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../productos.php' );
     return;
   }
@@ -30,7 +40,12 @@
 
   $productoCreado = $producto -> obtenerProductoPorCodigo( $codigo );
   if ( !$productoCreado ) {
-    echo '<h1> No se pudo crear el producto </h1>';
+    echo '<div class="flex justify-center">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">No se ha podido crear el producto.</span>
+      </div>
+    </div>';
     header( 'refresh: 5; url=../productos.php' );
     return;
   }
