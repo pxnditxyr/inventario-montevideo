@@ -19,10 +19,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <main class="flex flex-col items-center justify-center min-h-screen bg-stale-900">
+  <main class="flex flex-col items-center min-h-screen bg-slate-900">
     ' . $navbar . '
     <h1
-      class="text-5xl font-bold text-stale-100"
+      class="text-5xl font-bold text-slate-100"
     > ' . $titulo . ' </h1>
     ' . $componente . '
   </main>
