@@ -27,9 +27,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <main class="flex flex-col h-screen w-full">
+  <main class="flex flex-col h-screen w-full items-center">
     ' . $navbar . '
-    <h1> ' . $titulo . ' </h1>
+    <h1
+      class="text-5xl font-bold text-slate-900"
+    > ' . $titulo . ' </h1>
     ' . $componente . '
   </main>
 </body>

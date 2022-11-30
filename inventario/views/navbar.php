@@ -1,7 +1,7 @@
 <?php
   function navbar () {
     return '
-<nav class="flex flex-row items-center justify-between bg-gray-800 text-white p-4">
+<nav class="flex flex-row items-center justify-between bg-gray-800 text-white p-4 w-full">
   <ul class="flex flex-row items-center">
     <!-- class for links -->
     <li class="flex flex-row items-center justify-center p-2 rounded-md hover:bg-gray-700 cursor-pointer"><a href="index.php"> Home </a></li>
