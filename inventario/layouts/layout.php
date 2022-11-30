@@ -25,11 +25,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> ' . $titulo . ' </title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  ' . $navbar . '
-  <h1> ' . $titulo . ' </h1>
-  ' . $componente . '
+  <main class="flex flex-col h-screen w-full">
+    ' . $navbar . '
+    <h1> ' . $titulo . ' </h1>
+    ' . $componente . '
+  </main>
 </body>
 </html>';
   }
