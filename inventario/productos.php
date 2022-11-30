@@ -10,17 +10,17 @@
     foreach ( $productos as $producto ) {
       $categoriaDeProducto = $categoria -> obtenerCategoriaPorId( $producto[ 'categoria' ] );
       $tabla .= '<tr>';
-      $tabla .= '<td>' . $i . '</td>';
-      $tabla .= '<td>' . $producto[ 'nombre' ] . '</td>';
-      $tabla .= '<td>' . $producto[ 'codigo' ] . '</td>';
-      $tabla .= '<td>' . $producto[ 'detalles' ] . '</td>';
-      $tabla .= '<td>' . $producto[ 'fecha_adquirido' ] . '</td>';
-      $tabla .= '<td>' . $producto[ 'cantidad' ] . '</td>';
-      $tabla .= '<td>' . $producto[ 'precio' ] . '</td>';
-      $tabla .= '<td>' . $categoriaDeProducto[ 'nombre' ] . '</td>';
-      $tabla .= '<td>';
-      $tabla .= '<a href="editarProducto.php?id=' . $producto[ 'id' ] . '" class="btn btn-warning">Editar</a>';
-      $tabla .= '<a href="actions/eliminarProducto.php?id=' . $producto[ 'id' ] . '" class="btn btn-danger">Eliminar</a>';
+      $tabla .= '<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">' . $i . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'nombre' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'codigo' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'detalles' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'fecha_adquirido' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'cantidad' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $producto[ 'precio' ] . '</td>';
+      $tabla .= '<td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">' . $categoriaDeProducto[ 'nombre' ] . '</td>';
+      $tabla .= '<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">';
+      $tabla .= '<a href="editarProducto.php?id=' . $producto[ 'id' ] . '" class="text-indigo-600 hover:text-indigo-900">Editar</a>';
+      $tabla .= '<a href="actions/eliminarProducto.php?id=' . $producto[ 'id' ] . '" class="text-indigo-600 hover:text-indigo-900 ml-4">Eliminar</a>';
       $tabla .= '</td>';
       $tabla .= '</tr>';
       $i++;
@@ -45,40 +45,44 @@
     $opcionesDeCategorias = crearOpcionesDeCategorias( $categorias );
 
     return '
-        <div>
-          <form action="actions/crearProducto.php" method="POST">
-            <input type="text" name="nombre" placeholder="nombre">
-            <input type="text" name="codigo" placeholder="codigo">
-            <input type="text" name="detalles" placeholder="detalles">
-            <input type="date" name="fecha_adquirido" placeholder="Fecha de adquisicion" value="' . date( 'Y-m-d' ) . '">
-            <input type="number" name="cantidad" placeholder="cantidad">
-            <input type="number" name="precio" placeholder="Precio">
-            <select name="categoria_id">
+        <div class="flex flex-col p-5">
+          <form action="actions/crearProducto.php" method="POST" class="flex flex-col gap-4">
+            <input type="text" name="nombre" placeholder="nombre" class="border border-gray-400 p-2 rounded">
+            <input type="text" name="codigo" placeholder="codigo" class="border border-gray-400 p-2 rounded">
+            <input type="text" name="detalles" placeholder="detalles" class="border border-gray-400 p-2 rounded">
+            <input type="date" name="fecha_adquirido" placeholder="Fecha de adquisicion" value="' . date( 'Y-m-d' ) . '" class="border border-gray-400 p-2 rounded">
+            <input type="number" name="cantidad" placeholder="cantidad" class="border border-gray-400 p-2 rounded">
+            <input type="number" name="precio" placeholder="Precio" class="border border-gray-400 p-2 rounded">
+            <select name="categoria_id" class="border border-gray-400 p-2 rounded">
               ' . $opcionesDeCategorias . '
             </select>
-            <button> Crear Producto </button>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    > Crear Producto </button>
           </form>
         </div>
-        <div>
+    <div
+      class="flex flex-col p-5 w-full"
+    >
           <!-- Searching -->
-          <form action="busquedaProductos.php" method="POST">
-            <div>
-              <label for="search">Buscar</label>
-              <input type="text" name="search" id="search">
+          <form action="busquedaProductos.php" method="POST" class="w-full flex flex-col gap-4">
+            <div class="flex flex-row gap-4">
+              <label for="search" class="text-xl">Buscar</label>
+              <input type="text" name="search" id="search" class="border border-gray-400 p-2 rounded">
             </div>
-            <button>Buscar</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buscar</button>
           </form>
-          <table>
-            <thead>
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="border-b">
               <tr>
-                <th>Numero</th>
-                <th>Nombre</th>
-                <th>Codigo</th>
-                <th>Datalles</th>
-                <th>Fecha Adquirido</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Categoria</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Numero</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Nombre</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Codigo</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Datalles</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Fecha Adquirido</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Cantidad</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Precio</th>
+                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Categoria</th>
               </tr>
             </thead>
             <tbody>
