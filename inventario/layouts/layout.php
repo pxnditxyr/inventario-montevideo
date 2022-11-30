@@ -12,7 +12,6 @@
     return;
   }
 
-  echo json_encode( $_SESSION );
   include_once './views/navbar.php';
 
   function layout ( $titulo, $componente ) {
