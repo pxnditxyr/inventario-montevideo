@@ -27,7 +27,7 @@
             <input class="w-full p-2 border border-gray-300 rounded-lg mb-4" type="password" name="password" id="password" placeholder="" value="12345" />
           </div>
           <div class="flex items-center justify-center w-full p-4 bg-white rounded-lg shadow-lg">
-            <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded-lg shadow-lg">Iniciar sesión</button>
+            <button class="w-full p-2 bg-blue-500 text-white rounded-lg shadow-lg">Iniciar sesión</button>
           </div>
         </form>
       </div>
