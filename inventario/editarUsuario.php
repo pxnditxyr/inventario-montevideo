@@ -38,12 +38,12 @@
         if ( $regexIsDate ) {
           $inputs .= '<div class="flex gap-2">
                         <label for="' . $key . '" class="w-1/4 text-right text-gray-700">' . ucfirst( $key ) . '</label>
-                        <input type="date" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required class="w-3/4 border border-gray-300 rounded-lg p-2">
+          <input type="date" class="w-3/4 border border-gray-300 rounded-lg p-2" id="' . $key . '" name="' . $key . '" value="' . $value . '" required class="w-3/4 border border-gray-300 rounded-lg p-2">
                       </div>';
         } else {
           $inputs .= '<div class="form-group">
                         <label for="' . $key . '" class="w-1/4 text-right text-gray-700">' . ucfirst( $key ) . '</label>
-                        <input type="text" class="form-control" id="' . $key . '" name="' . $key . '" value="' . $value . '" required class="w-3/4 border border-gray-300 rounded-lg p-2">
+                        <input type="text" class="w-3/4 border border-gray-300 rounded-lg p-2" id="' . $key . '" name="' . $key . '" value="' . $value . '" required class="w-3/4 border border-gray-300 rounded-lg p-2">
                       </div>';
         }
       }
