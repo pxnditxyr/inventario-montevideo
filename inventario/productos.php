@@ -63,7 +63,7 @@
         </div>
     <div class="flex flex-col p-5 w-full">
           <!-- Searching -->
-          <form action="busquedaProductos.php" method="POST" class="w-full flex flex-col gap-4">
+          <form action="busquedaProductos.php" method="POST" class="w-full flex gap-4">
             <div class="flex flex-row gap-4">
               <label for="search" class="text-gray-700 font-light text-xl">Buscar</label>
               <input type="text" name="search" id="search" class="border border-gray-400 p-2 rounded">
