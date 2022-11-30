@@ -16,11 +16,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> ' . $titulo . ' </title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  ' . $navbar . '
-  <h1> ' . $titulo . ' </h1>
-  ' . $componente . '
+  <main class="flex flex-col items-center justify-center min-h-screen bg-stale-900">
+    ' . $navbar . '
+    <h1
+      class="text-5xl font-bold text-stale-100"
+    > ' . $titulo . ' </h1>
+    ' . $componente . '
+  </main>
 </body>
 </html>';
   }
